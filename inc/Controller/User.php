@@ -1,0 +1,12 @@
+<?php
+
+namespace Controller;
+
+use Core\Request as Request;
+
+class User
+{
+    public function Logout() {
+        Request::Location(HOME_LOCATION);
+    }
+}
