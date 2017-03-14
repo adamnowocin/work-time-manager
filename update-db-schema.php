@@ -26,11 +26,11 @@ foreach ($models as $key => $model) {
             $fieldType = 'varchar(255)';
             $default = "DEFAULT ''";
             if(isset($f['type'])) {
-                if($f['type'] == 'bool') {
+                if($f['type'] == 'boolean') {
                     $fieldType = 'tinyint(1)';
                     $default = "DEFAULT '0'";
                 }
-                if($f['type'] == 'int') {
+                if($f['type'] == 'integer') {
                     $fieldType = 'bigint(20)';
                     $default = "DEFAULT '0'";
                 }

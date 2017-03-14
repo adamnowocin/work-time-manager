@@ -10,12 +10,13 @@ class User extends DataModel
         'login' => array(
             'type' => 'string',
             'length' => 200,
-            'required' => true
         ),
         'pass' => array(
             'type' => 'string',
             'length' => 200,
-            'required' => true
+        ),
+        'is_admin' => array(
+            'type' => 'boolean',
         ),
     );
 
