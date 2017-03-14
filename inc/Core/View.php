@@ -11,7 +11,7 @@ class View {
     private static $Extension = '.html';
 
     public static function Get($file, $variables = false) {
-        if (!($tpl = @file_get_contents(CORE_PATH . '/view/' . $file . self::$Extension))) {
+        if (!($tpl = @file_get_contents(CORE_PATH . '/inc/View/' . $file . self::$Extension))) {
             Request::Error(4);
         }
         if($variables !== false) {
@@ -23,7 +23,7 @@ class View {
     }
 
     public static function Load($file, $isPart = false) {
-        if (!($tpl = @file_get_contents(CORE_PATH . '/view/' . $file . self::$Extension))) {
+        if (!($tpl = @file_get_contents(CORE_PATH . '/inc/View/' . $file . self::$Extension))) {
             Request::Error(4);
         }
         if($isPart) {
