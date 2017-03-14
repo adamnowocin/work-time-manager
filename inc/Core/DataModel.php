@@ -7,8 +7,17 @@ use Core\Database as Database;
 abstract class DataModel
 {
     protected $fields = array();
-    protected $loadedData = array();
     protected $table = null;
+    
+    public function TableFields()
+    {
+        return $this->fields;
+    }
+    
+    public function TableName()
+    {
+        return $this->table;
+    }
     
     public function All()
     {
