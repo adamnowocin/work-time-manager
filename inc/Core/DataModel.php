@@ -6,6 +6,7 @@ use Core\Database;
 
 class DataModel
 {
+
     protected $fields = array();
     protected $table  = null;
 
@@ -68,4 +69,5 @@ class DataModel
             Database::DeleteWhere($this->table, $where);
         }
     }
+
 }
