@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Core\View as View;
+use Core\View;
 
 class Index
 {

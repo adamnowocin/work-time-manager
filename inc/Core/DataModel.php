@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Core\Database as Database;
+use Core\Database;
 
 abstract class DataModel
 {

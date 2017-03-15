@@ -4,7 +4,7 @@ header('Content-Type: text/plain');
 
 @require('bootstrap.php');
 
-use Core\Database as Database;
+use Core\Database;
 
 $models = scandir(CORE_PATH . '/inc/Model');
 

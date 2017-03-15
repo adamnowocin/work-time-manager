@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Core\Request as Request;
+use Core\Request;
 
 class User
 {

@@ -1,2 +1,3 @@
 # work-time-manager
-work time manager
+
+work in progress...

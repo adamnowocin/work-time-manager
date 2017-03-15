@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Core\Request as Request;
+use Core\Request;
 
 class View {
     

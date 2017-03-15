@@ -2,7 +2,7 @@
 
 namespace Model;
 
-use Core\DataModel as DataModel;
+use Core\DataModel;
 
 class AssignedProject extends DataModel
 {
