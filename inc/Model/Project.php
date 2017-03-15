@@ -6,6 +6,7 @@ use Core\DataModel;
 
 class Project extends DataModel
 {
+
     protected $fields = array(
         'name' => array(
             'type' => 'string',
@@ -14,4 +15,5 @@ class Project extends DataModel
     );
 
     protected $table = 'project';
+
 }

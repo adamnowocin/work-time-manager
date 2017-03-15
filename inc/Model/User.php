@@ -6,6 +6,7 @@ use Core\DataModel;
 
 class User extends DataModel
 {
+
     protected $fields = array(
         'login' => array(
             'type' => 'string',
@@ -21,4 +22,5 @@ class User extends DataModel
     );
 
     protected $table = 'user';
+
 }

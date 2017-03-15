@@ -2,11 +2,12 @@
 
 namespace Core;
 
-class Request {
+class Request
+{
     
     public static function Error($code = 0, $error = 'Error')
     {
-       die('<!DOCTYPE html><head><title>' . $code . ' - ' . $error . '</title><meta charset="utf-8" /></head><body>' . $code . ' - ' . $error . '</body></html>');
+        die('<!DOCTYPE html><head><title>' . $code . ' - ' . $error . '</title><meta charset="utf-8" /></head><body>' . $code . ' - ' . $error . '</body></html>');
     }
     
     public static function Field($field)
@@ -27,7 +28,7 @@ class Request {
     
     public static function Location($url)
     {
-        header('Location: '.$url);
+        header('Location: ' . $url);
         die;
     }
     

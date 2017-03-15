@@ -6,6 +6,7 @@ use Core\DataModel;
 
 class Time extends DataModel
 {
+
     protected $fields = array(
         'user_id' => array(
             'type' => 'integer',
@@ -23,4 +24,5 @@ class Time extends DataModel
     );
 
     protected $table = 'time';
+
 }

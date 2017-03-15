@@ -4,21 +4,21 @@ namespace Core;
 
 use Core\Database;
 
-abstract class DataModel
+class DataModel
 {
     protected $fields = array();
-    protected $table = null;
-    
+    protected $table  = null;
+
     public function TableFields()
     {
         return $this->fields;
     }
-    
+
     public function TableName()
     {
         return $this->table;
     }
-    
+
     public function All()
     {
         return Database::Find($this->table);
@@ -42,33 +42,29 @@ abstract class DataModel
     public function Add($data = array())
     {
         $fields = array();
-        foreach($this->fields as $field => $fieldData) {
-            if(isset($data[$field])) {
+        foreach ($this->fields as $field => $fieldData) {
+            if (isset($data[$field])) {
                 $fields[$field] = $data[$field];
             }
         }
         Database::Insert($this->table, $fields);
     }
-    
+
     public function Update($where, $fields)
     {
-        Database::UpdateWhere(
-            $this->table,
-            $where,
-            $fields
-        );
+        Database::UpdateWhere($this->table, $where, $fields);
     }
-    
+
     public function Remove($id)
     {
         Database::DeleteWhere($this->table, array(
-            'id' => $id
+            'id' => $id,
         ));
     }
-    
+
     public function RemoveByFields($where)
     {
-        if(!empty($where)) {
+        if (!empty($where)) {
             Database::DeleteWhere($this->table, $where);
         }
     }

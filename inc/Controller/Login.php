@@ -6,7 +6,10 @@ use Core\View;
 
 class Login
 {
-    public function View() {
+
+    public function View()
+    {
         View::Load('login');
     }
+
 }

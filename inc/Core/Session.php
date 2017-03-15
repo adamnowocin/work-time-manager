@@ -2,8 +2,9 @@
 
 namespace Core;
 
-class Session {
-    
+class Session
+{
+
     public static function Get($field)
     {
         $result = false;
@@ -12,7 +13,7 @@ class Session {
         }
         return $result;
     }
-    
+
     public static function Set($field, $value)
     {
         $_SESSION[$field] = $value;
@@ -22,5 +23,5 @@ class Session {
     {
         unset($_SESSION[$field]);
     }
-    
+
 }

@@ -6,6 +6,7 @@ use Core\DataModel;
 
 class AssignedProject extends DataModel
 {
+
     protected $fields = array(
         'user_id' => array(
             'type' => 'integer',
@@ -16,4 +17,5 @@ class AssignedProject extends DataModel
     );
 
     protected $table = 'assigned_project';
+
 }
