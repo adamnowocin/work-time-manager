@@ -1,15 +1,15 @@
 <?php
 
-//debug mode enabled/disabled
+// debug mode enabled/disabled
 define('DEBUG_MODE', false);
 
-//timezone
+// timezone
 date_default_timezone_set('Europe/Warsaw');
 
-//home location
+// home location
 define('HOME_LOCATION', '/');
 
-//database config
+// database config
 define('DB_HOST', 'localhost');
 define('DB_USER', 'wtm');
 define('DB_PASS', 'password');
