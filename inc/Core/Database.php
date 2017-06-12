@@ -19,6 +19,18 @@ class Database
         }
     }
 
+    private static function ParseParams($paramsArray)
+    {
+        $params = '';
+        foreach ($paramsArray as $key => $value) {
+            if ($params !== '') {
+                $params .= ' AND ';
+            }
+            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
+        }
+        return $params;
+    }
+
     public static function Query($sql)
     {
         self::Connect();
@@ -103,36 +115,14 @@ class Database
 
     public static function Update($table, $id, $fields)
     {
-        $params = '';
-
-        foreach ($fields as $key => $value) {
-            if ($params !== '') {
-                $params .= ', ';
-            }
-            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
-
+        $params = self::ParseParams($fields);
         return self::Query('UPDATE ' . DB_PREFIX . $table . ' SET ' . $params . ' WHERE id=' . self::EscapeId($id) . ';');
     }
 
     public static function UpdateWhere($table, $where, $fields)
     {
-        $params = '';
-        foreach ($fields as $key => $value) {
-            if ($params !== '') {
-                $params .= ', ';
-            }
-            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
-
-        $params2 = '';
-        foreach ($where as $key => $value) {
-            if ($params2 !== '') {
-                $params2 .= ' AND ';
-            }
-            $params2 .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
-
+        $params = self::ParseParams($fields);
+        $params2 = self::ParseParams($where);
         return self::Query('UPDATE ' . DB_PREFIX . $table . ' SET ' . $params . ' WHERE ' . $params2 . ';');
     }
 
@@ -143,28 +133,15 @@ class Database
 
     public static function DeleteWhere($table, $where)
     {
-        $params = '';
-        foreach ($where as $key => $value) {
-            if ($params !== '') {
-                $params .= ' AND ';
-            }
-            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
-
+        $params = self::ParseParams($where);
         return self::Query('DELETE FROM ' . DB_PREFIX . $table . ' WHERE ' . $params . ';');
     }
 
     public static function Find($table, $where = array(), $additional = '')
     {
         $result = array();
-        $params = '';
+        $params = self::ParseParams($where);
 
-        foreach ($where as $key => $value) {
-            if ($params !== '') {
-                $params .= ' AND ';
-            }
-            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
         if ($params != '') {
             self::Query('SELECT * FROM ' . DB_PREFIX . $table . ' WHERE ' . $params . ' ' . $additional . ';');
         } elseif ($additional != '') {
@@ -172,54 +149,18 @@ class Database
         } else {
             self::Query('SELECT * FROM ' . DB_PREFIX . $table);
         }
-        while ($r = self::Fetch()) {
-            $result[] = $r;
-        }
-        return $result;
-    }
-
-    public static function FindFields($table, $fields, $where, $additional = '')
-    {
-        $result    = array();
-        $params    = '';
-        $fieldsStr = '';
-
-        foreach ($where as $key => $value) {
-            if ($params !== '') {
-                $params .= ' AND ';
-            }
-            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
-        foreach ($fields as $value) {
-            if ($fieldsStr !== '') {
-                $fieldsStr .= ', ';
-            }
-            $fieldsStr .= '`' . $value . '`';
-        }
-
-        if ($params != '' || $additional != '') {
-            self::Query('SELECT ' . $fieldsStr . ' FROM ' . DB_PREFIX . $table . ' WHERE ' . $params . ' ' . $additional . ';');
-        } else {
-            self::Query('SELECT ' . $fieldsStr . ' FROM ' . DB_PREFIX . $table);
-        }
 
         while ($r = self::Fetch()) {
             $result[] = $r;
         }
+
         return $result;
     }
 
     public static function FindOne($table, $where, $additional = '')
     {
         $result = false;
-        $params = '';
-
-        foreach ($where as $key => $value) {
-            if ($params !== '') {
-                $params .= ' AND ';
-            }
-            $params .= '`' . $key . '` = "' . self::Escape($value) . '"';
-        }
+        $params = self::ParseParams($where);
 
         if ($params != '') {
             self::Query('SELECT * FROM ' . DB_PREFIX . $table . ' WHERE ' . $params . ' ' . $additional . ';');
