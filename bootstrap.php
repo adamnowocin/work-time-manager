@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 define('CORE_PATH', dirname(__FILE__));
 
 @require_once(CORE_PATH . '/config.php');
