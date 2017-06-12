@@ -12,4 +12,6 @@ if (!Core\Session::Get('uid')) {
     (new Controller\Index)->View();
 }
 
+Core\View::Variable('part-header', Core\View::Get('part-header'));
+Core\View::Variable('part-footer', Core\View::Get('part-footer'));
 Core\View::Render();

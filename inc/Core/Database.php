@@ -61,6 +61,11 @@ class Database
         }
     }
 
+    public static function GetHash($str)
+    {
+        return sha1(APP_SALT . $str);
+    }
+
     public static function Escape($str)
     {
         self::Connect();
